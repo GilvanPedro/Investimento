@@ -27,9 +27,8 @@ Investimento/
 ├─ index.html        # Estrutura e registros do SW + import de Chart.js
 ├─ style.css         # Estilo responsivo e moderno
 ├─ script.js         # Lógica: CRUD local, gráfico, formatação
-├─ manifest.json     # Config PWA (nome, cores, ícones)
+├─ manifest.json     # Config PWA (nome e cores)
 ├─ sw.js             # Cache de assets e modo offline
-└─ icons/            # Ícones do PWA (criar, ver seção abaixo)
 ```
 
 ## ▶️ Como executar localmente
@@ -44,26 +43,13 @@ Investimento/
 Observação: alguns navegadores só ativam Service Worker/PWA quando servido via HTTP(s).
 
 ## 📦 PWA (instalação e offline)
-- O `manifest.json` define nome, cores e ícones.
+- O `manifest.json` define nome e cores.
 - O `sw.js` faz cache de:
   - `/`, `/index.html`, `/style.css`, `/script.js`
   - CDNs de Chart.js e DataLabels
   - Google Fonts (Inter)
 - Após abrir o app uma vez online, ele funciona offline.
 - Para instalar, use "Adicionar à tela inicial" no navegador suportado.
-
-### Ícones do PWA
-Crie a pasta `icons/` na raiz com estes arquivos (referenciados em `manifest.json`):
-- `icon-72x72.png`
-- `icon-96x96.png`
-- `icon-128x128.png`
-- `icon-144x144.png`
-- `icon-152x152.png`
-- `icon-192x192.png`
-- `icon-384x384.png`
-- `icon-512x512.png`
-
-Dica: você pode gerar automaticamente com ferramentas como RealFaviconGenerator ou PWABuilder.
 
 ## 🧠 Como usar
 1. Preencha **Categoria** e **Valor (R$)** no formulário.
