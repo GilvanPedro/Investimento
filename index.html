@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Acompanhe e gerencie seus investimentos de forma simples e intuitiva">
+  <meta name="theme-color" content="#4361ee">
+  <title>Meus Investimentos | Acompanhe Seus Ativos</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- PWA Support -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Meus Investimentos">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+  
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#4361ee" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 Meus Investimentos</h1>
+      <p class="subtitle">Acompanhe seus ativos de forma simples e intuitiva</p>
+    </header>
+    
+    <main>
+      <section class="card">
+        <h2>Adicionar Investimento</h2>
+        <form id="investmentForm">
+          <div class="form-group">
+            <label for="category">Categoria</label>
+            <input 
+              type="text" 
+              id="category" 
+              placeholder="Ex: Ações, FIIs, Renda Fixa..." 
+              required
+              autocomplete="off"
+              autocapitalize="words"
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="value">Valor (R$)</label>
+            <input 
+              type="text" 
+              id="value" 
+              inputmode="decimal"
+              placeholder="0,00" 
+              required
+              autocomplete="off"
+            >
+          </div>
+          
+          <button type="submit" class="btn-primary">
+            <span>Adicionar Investimento</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Meu Portfólio</h2>
+          <div class="total-value" id="totalValue">R$ 0,00</div>
+        </div>
+        
+        <div class="chart-container">
+          <canvas id="investmentChart" aria-label="Gráfico de distribuição dos investimentos" role="img"></canvas>
+        </div>
+        
+        <div class="investments-list">
+          <h3>Investimentos</h3>
+          <ul id="investmentList" class="investments">
+            <!-- Lista será preenchida dinamicamente -->
+          </ul>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <p>© 2025 Meus Investimentos | Desenvolvido com ❤️</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="script.js"></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful');
+          })
+          .catch(err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
